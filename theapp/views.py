@@ -1,10 +1,26 @@
 from django.shortcuts import render
-
+from .models import *
 # Create your views here.
 
 
 def Index(request):
-    return render(request, 'index.html')
+    title_name = Shior.objects.all()
+    about_team = Team.objects.all()
+
+    if request.method =='POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        allcontact = Contact(name=name, email=email, subject=subject, message=message)
+        allcontact.save()
+        
+    context = {
+        'title_name':title_name,
+        'about_team':about_team,
+        'contact_form':contact_form,
+    }
+    return render(request, 'index.html', context)
 
 def A404(request):
     return render(request, '404.html')

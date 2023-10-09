@@ -5,7 +5,7 @@ from django.db import models
 class Shior(models.Model):
     title1 = models.CharField(max_length=25)
     title2 = models.CharField(max_length=25)
-    description = models.CharField(max_length=45)
+    description = models.CharField(max_length=80)
     
     def __str__(self):
         return f"{self.title1} - {self.title2}"
@@ -41,6 +41,7 @@ class Home(models.Model):
     
 
 class Team(models.Model):
+    description = models.CharField(max_length=255)
     img = models.ImageField(upload_to='images/team')
     facebook_link = models.URLField(max_length=255)   
     instagram_link = models.URLField(max_length=255)
