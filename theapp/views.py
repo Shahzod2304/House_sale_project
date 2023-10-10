@@ -2,10 +2,11 @@ from django.shortcuts import render
 from .models import *
 # Create your views here.
 
-
 def Index(request):
     title_name = Shior.objects.all()
     about_team = Team.objects.all()
+    type_of_property = Category.objects.all()
+    list_property = Home.objects.all()
 
     if request.method =='POST':
         name = request.POST.get('name')
@@ -18,7 +19,8 @@ def Index(request):
     context = {
         'title_name':title_name,
         'about_team':about_team,
-        'contact_form':contact_form,
+        'type_of_property':type_of_property,
+        'list_property':list_property,
     }
     return render(request, 'index.html', context)
 

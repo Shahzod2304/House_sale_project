@@ -14,15 +14,22 @@ class Shior(models.Model):
 class Category_Name(models.Model):
     category_name_select = models.CharField(max_length=55)
 
+    def __str__(self):
+        return self.category_name_select
+
 class Category(models.Model):
     img = models.ImageField(upload_to='images/category')
     category_name = models.ForeignKey(Category_Name, on_delete=models.CASCADE)
-    
+
     def __str__(self):
         return self.category_name
+
     
 class Category_home(models.Model):
     home_type = models.CharField(max_length=35)
+
+    def __str__(self):
+        return self.home_type
 
 
 class Home(models.Model):
@@ -36,12 +43,8 @@ class Home(models.Model):
     uy_count = models.PositiveIntegerField()
     bathroom_count = models.PositiveIntegerField()
 
-    def __str__(self):
-        return self.home_type
-    
 
 class Team(models.Model):
-    description = models.CharField(max_length=255)
     img = models.ImageField(upload_to='images/team')
     facebook_link = models.URLField(max_length=255)   
     instagram_link = models.URLField(max_length=255)
