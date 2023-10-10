@@ -43,6 +43,8 @@ class Home(models.Model):
     uy_count = models.PositiveIntegerField()
     bathroom_count = models.PositiveIntegerField()
 
+    def __str__(self):
+        return self.company_name
 
 class Team(models.Model):
     img = models.ImageField(upload_to='images/team')
@@ -57,10 +59,10 @@ class Team(models.Model):
 
 
 class Contact(models.Model):
-    name = models.CharField(max_length=25)
+    name1 = models.CharField(max_length=25)
     email = models.EmailField(max_length=45)
     subject = models.CharField(max_length=255)
     message = models.TextField()
 
     def __str__(self):
-        return self.name
+        return self.name1

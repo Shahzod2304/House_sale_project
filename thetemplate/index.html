@@ -168,17 +168,14 @@
                         </div>
                     </div>
                     <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
+                        {% for cat in category %}
                         <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
                             <li class="nav-item me-2">
-                                <a class="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1">Featured</a>
+                                <a class="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1">{{cat.home_type}}</a>
                             </li>
-                            <li class="nav-item me-2">
-                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-2">For Sell</a>
-                            </li>
-                            <li class="nav-item me-0">
-                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3">For Rent</a>
-                            </li>
+                            
                         </ul>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="tab-content">
@@ -190,7 +187,7 @@
                                 <div class="property-item rounded overflow-hidden">
                                     <div class="position-relative overflow-hidden">
                                         <a href=""><img class="img-fluid" src="{{r.img}}" alt=""></a>
-                                        <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For Sell</div>
+                                        <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">{{r.home_type}}</div>
                                         <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">{{r.home_type}}</div>
                                     </div>
                                     <div class="p-4 pb-0">
@@ -207,9 +204,27 @@
                             </div>
                             {% endfor %}
 
-                            <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                                <a class="btn btn-primary py-3 px-5" href="">Browse More Property</a>
+                          
+
+                            <div class="container align-items-center">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        {% if page.has_previous %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ page.previous_page_number }}">orqaga</a></li>
+                                        {% endif %}
+                            
+                                        <span class="page-link">
+                                            Page {{ page.number }} of {{ page.paginator.num_pages }}.
+                                        </span>
+                            
+                                        {% if page.has_next %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ page.next_page_number }}">keyingisi</a></li>
+                                        {% endif %}
+                                        </span>
+                                    </ul>
+                                </nav>
                             </div>
+
                         </div>
                     </div>
                     <div id="tab-2" class="tab-pane fade show p-0">
