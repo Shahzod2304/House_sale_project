@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,  get_object_or_404
 from .models import *
 from django.core.paginator import Paginator
 # Create your views here.
@@ -21,6 +21,7 @@ def Index(request):
         'list_property':list_property,
         'category':category,
         "page": page
+       
     }
     return render(request, 'index.html', context)
 
@@ -51,3 +52,8 @@ def Property_Type(request):
 
 def Testimonial(request):
     return render(request, 'testimonial.html')
+
+def post_detail(request, pk):
+    post = get_object_or_404(Home, pk=pk)  # Post obyektini olish yoki 404 xatosi chiqarish
+    return render(request, 'uy_detail.html', {'post': post})
+

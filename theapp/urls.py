@@ -11,4 +11,5 @@ urlpatterns = [
     path('property_list/', Property_List, name='property_list'),
     path('property_type/', Property_Type, name='property_type'),
     path('testimonial/', Testimonial, name='testimonial'),
+    path('home/<int:pk>/', post_detail, name='home_detail')
 ]

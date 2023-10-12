@@ -42,7 +42,7 @@ class Home(models.Model):
     maydoni = models.FloatField()
     uy_count = models.PositiveIntegerField()
     bathroom_count = models.PositiveIntegerField()
-
+    description = models.TextField()
     def __str__(self):
         return self.company_name
 
